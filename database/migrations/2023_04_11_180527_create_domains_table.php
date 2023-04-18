@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
-            $table->string('domains');
+            $table->string('domain');
+            $table->text('whois_raw')->nullable()->default(null);
+            $table->date('expired_date')->nullable()->default(null);
+            $table->string('dns')->nullable()->default(null);
+            $table->string('domain_ip')->nullable()->default(null);
+            $table->date('discovered')->nullable()->default(null);
+            $table->string('cms_principal')->nullable()->default(null);
+            $table->foreignId("analytics_id")->nullable()->constrained();
+            $table->foreignId("adsenses_id")->nullable()->constrained();
             $table->timestamps();
         });
     }
