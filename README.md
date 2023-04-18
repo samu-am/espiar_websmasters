@@ -1,66 +1,175 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Espiar als webmasters
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Volem crear una aplicació web que serveixi per espiar les pàgines webs i els seus creadors. Utilitzarem el seguiment dels identificadors com Google Analytics, Google Adsense, urls indexades a Google i Bing, ips dels servidors per poder trobar vinculacions entre els propietaris de diferents webs.
 
-## About Laravel
+**Idea:**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+La idea és d’en Dídac Anton, un noi de 17 anys que ha creat una eina semblant pel seu ús propi.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[seo_torch](https://twitter.com/seo_torch)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Tweets d’on trèiem les idees:**
 
-## Learning Laravel
+[https://twitter.com/seo_torch/status/1637548580201267201](https://twitter.com/seo_torch/status/1637548580201267201)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+[https://twitter.com/seo_torch/status/1637222090989248514](https://twitter.com/seo_torch/status/1637222090989248514)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Reunió inicial:**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Reunió entre els membres per definir el valor afegit que aportem, indicadors rellevant, possibles ampliacions.
+- Elecció de les tecnologies.
+- Creació dels equips. (No val els de l'última fila junts)
 
-## Laravel Sponsors
+> Idea del profe: Penso en una web amb Laravel on puguem cercar el nom d’un domini o paraula clau que ens interessi. Que surti un llistat de dominis
+Tota la informació de la web es crearà amb agents/scripts amb Python que aniran poblant i actualitzant la base de dades de la web utilitzant consultes a APIs sobre aquesta. Podem utilitzar màquines virtuals d'Izard per correr els scripts.
+> 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Indicadors**
 
-### Premium Partners
+“columnes de la taula de la DB”
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```php
+domain
+adsense_code
+analytics_code
+whois_raw
+expired_date
+dns
+domain_ip
+discovered
+cms_principal
+```
 
-## Contributing
+[https://github.com/samu-am/espiar_websmasters](https://github.com/samu-am/espiar_websmasters)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Tasques:
 
-## Code of Conduct
+## Scrapejar competencia
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Altres web utilitzen la mateixa metodologia que nosaltres, podem processar la seva informació.
 
-## Security Vulnerabilities
+[https://site-overview.com/website-report-search/google-adsense-id-acc/3344108075654010](https://site-overview.com/website-report-search/google-adsense-id-acc/3344108075654010)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Crear backend
 
-## License
+(Samuel, Oriol)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+tindrà 3 taules
+
+domain, analytics, adsense
+
+### Crear API
+
+- 2 endpoints per informar dels codis de adsense (Ivan)
+    
+    ```csharp
+    POST domain.com/api/adsenserequest
+    Response:
+    		{"domain" : "pepe.com"}
+    
+    POST domain.com/api/adsenseupdate
+    Request:
+    {"domain": "pepe.com",
+    	"adsense_code" : "UA-12345-12"}
+    ```
+    
+- 2 endpoints per informar dels codis de analytics (David)
+    
+    ```csharp
+    POST domain.com/api/analiticsrequest
+    Response:
+    		{"domain" : "pepe.com"}
+    
+    POST domain.com/api/analiticsupdate
+    Request:
+    {"domain": "pepe.com",
+    	"adsense_code" : "pub-1212892387/12345"}
+    ```
+    
+- 2 endpoints per guardar el raw del whois (Camilo)
+
+```csharp
+POST domain.com/api/whoisrequest
+Response:
+		{"domain" : "pepe.com"}
+
+POST domain.com/api/whoisupdate
+Request:
+{"domain": "pepe.com",
+	"whois_raw" : "BLOB"}
+```
+
+- 2 endpoints per preguntar la IP d’un domini (Jordi)
+
+```csharp
+POST domain.com/api/iprequest
+Response:
+		{"domain" : "pepe.com"}
+
+POST domain.com/api/ipupdate
+Request:
+{"domain": "pepe.com",
+	"ip" : "123.123.123.123"}
+```
+
+- 2 endpoints per detectar el CMS utilitzat (Kevin)
+
+```csharp
+POST domain.com/api/cmsrequest/2
+Response:
+		{"pepe.com","manolo.es"}
+
+POST domain.com/api/cmsupdate
+Request:
+{"domain": "pepe.com",
+	"cms" : "Wordpress",
+	"version": "6.12"}
+```
+
+- 2 endpoints per detectar el plugins de Wordpress(Eric)
+
+```csharp
+POST domain.com/api/wordpressrequest
+Response:
+		{"pepe.com"}
+
+POST domain.com/api/wordpressupdate
+Request:
+{"domain": "pepe.com",
+	"cms" : "Wordpress",
+	"theme" : "elementor-pro",
+	"plugins" : "hellodolly","gutenberg"}
+```
+
+### Descobrir dominis
+
+- Cercar a Google paraules a partir d’un diccionari. (Marc)
+- 
+
+### Descobrir codi analytics
+
+- Obrir la pàgina inicial de la web i cercar si existeix un codi de Google analytics (Judit)
+
+### Descobrir codi adsense
+
+- Obrir la pàgina inicial de la web i cercar si existeix un codi de Google adsense (Anna)
+
+### Guardar tot el Whois del domini
+
+- Demanar el whois del domini i retornar-lo al servidor (Carlos)
+- Extreure data d’expiració del domini (Daniel)
+
+### Consultar IP del servidor
+
+- Demanar el domini d’una web i consultar la IP del servidor (Lluis)
+- Resoldre el DNS del domini (Xavier)
+
+### Consultar el CMS
+
+- Demanar un llistat de dominis, entre 1 i 10 i identificar els CMS principals i les seves versions.
+- Identificar els CMS:
+    - Wordpress(Joel)
+    - Drupal(Aleix)
+    - Joomla(Ashutosh)
+    - Prestashop(Ernest)
+    - itentificar plugins de Wordpress (Angel)
