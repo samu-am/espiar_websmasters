@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/cmsrequest/{number}', [CMSController::class, 'getDomains']);
+Route::post('/cmsupdate', [CMSController::class, 'setCMSName']);
