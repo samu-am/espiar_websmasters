@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Domain;
@@ -13,9 +13,9 @@ class DomainController extends Controller
      */
     public function index()
     {
-        $domains = Domains::paginate(15);
-        
-        return view('back.categories.listado', compact('domains'));
+        $domains = Domain::paginate(10);
+
+        return view('welcome', compact('domains'));
     }
 
     /**
@@ -57,7 +57,5 @@ class DomainController extends Controller
         $domains = Domain::all();
 
         return response()->json(['status' => 1, 'domains' => $domains]);
-
     }
-
 }

@@ -25,7 +25,7 @@ class Domain extends Model
     {
         return $this->belongsTo(Analytic::class);
     }
-    
+
     public function adense()
     {
         return $this->belongsTo(Adsense::class);
