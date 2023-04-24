@@ -24,7 +24,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/cmsrequest/{number}', [CMSController::class, 'getDomains']);
 Route::post('/cmsupdate', [CMSController::class, 'setCMSName']);
 
+Route::post('/adsenserequest', [AdsenseController::class, 'getAdsense']);
+
+Route::post('/adsenseupdate', [AdsenseController::class, 'setAdsense']);
+
 Route::post('/whoisrequest', [WhoisController::class, 'getWhois']);
+
 Route::post('/whoisupdate', [WhoisController::class, 'setWhois']);
 
 Route::post('/adsenserequest', [AdsenseController::class, 'getAdsense']);
+
