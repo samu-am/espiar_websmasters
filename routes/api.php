@@ -5,7 +5,7 @@ use App\Http\Controllers\CMSController;
 use App\Http\Controllers\WhoisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\IpController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,3 +34,6 @@ Route::post('/whoisupdate', [WhoisController::class, 'setWhois']);
 
 Route::post('/adsenserequest', [AdsenseController::class, 'getAdsense']);
 
+
+Route::post('/iprequest', [IpController::class,'ipRequest']);
+Route::post('/ipupdate', [IpController::class,'ipUpdate']);
