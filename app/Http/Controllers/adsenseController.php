@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Adsense;
+use App\Models\Domain;
 use Symfony\Component\HttpFoundation\Response;
 
-class adsenseController extends Controller
+class AdsenseController extends Controller
 {
     public function getAdsense() {
-        $domains = Adsense::select("domain")->get();
-        $domainsParsed = [];
-        foreach ($domains as $domain) {
-            $domainsParsed[] = $domain['domain'];
-        }
-        return new Response(json_encode($domainsParsed), 200, ['content-type' => 'application/json']);
+        $domain = Domain::select("domain")->whereNull('adsenses_id')->inRandomOrder()->first();
+
+        return new Response(json_encode($domain), 200, ['content-type' => 'application/json']);
     }
 
     public function setAdsense() {
