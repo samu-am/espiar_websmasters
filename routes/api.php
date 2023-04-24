@@ -3,7 +3,7 @@
 use App\Http\Controllers\CMSController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\IpController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/cmsrequest/{number}', [CMSController::class, 'getDomains']);
 Route::post('/cmsupdate', [CMSController::class, 'setCMSName']);
+
+Route::post('/iprequest', [IpController::class,'ipRequest']);
+Route::post('/ipupdate', [IpController::class,'ipUpdate']);
