@@ -19,7 +19,7 @@ class WhoisController extends Controller
         $domain = $request->get('domain');
         $whois = $request->get('whois_raw');
 
-        if ($domain !== null && $whois !== null) {
+        if ($domain === null || $whois === null) {
             return new Response(json_encode(['status' => "Algún dato no es correcto"]), 400, ['content-type' => 'application/json']);
         }
 
