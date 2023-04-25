@@ -9,11 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 class CMSController extends Controller
 {
     /**
-     * @param int $number
+     * @param Request $request
      * @return Response
      */
-    public function getDomains(int $number): Response
+    public function getDomains(Request $request): Response
     {
+        $validatedData = $request->validate([
+            'number' => 'required|integer|between:1,100',
+        ]);
+
+        $number = $request->input('number');
+
         $domains = Domain::select("domain")->whereNull('cms_principal')->limit($number)->get();
         $domainsParsed = [];
         foreach ($domains as $domain) {
