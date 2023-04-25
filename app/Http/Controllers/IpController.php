@@ -20,4 +20,10 @@ class IpController extends Controller
         return new Response(json_encode($domainsParsed), 200, ['content-type' => 'application/json']);
     }
 
+    public function ipUpdate(Request $request): Response {
+
+        Domain::where('domain', $request->get('domain'))->update(['ip' => $request->get('ip')]);
+        return new Response(json_encode(['status' => 'ip introduida a la base de dades correctament']), 200, ['content-type' => 'application/json']);
+
+    }
 }
