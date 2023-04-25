@@ -65,12 +65,12 @@ domain, analytics, adsense
     ```csharp
     POST domain.com/api/adsenserequest
     Response:
-    		{"domain" : "pepe.com"}
+    		{"domain" : "levelup.com"}
     
     POST domain.com/api/adsenseupdate
     Request:
-    {"domain": "pepe.com",
-    	"adsense_code" : "UA-12345-12"}
+    {"domain": "levelup.com",
+    	"adsense_code" : "ca-pub-9723404838950731"}
     ```
     
 - 2 endpoints per informar dels codis de analytics (David)
@@ -78,12 +78,12 @@ domain, analytics, adsense
     ```csharp
     POST domain.com/api/analiticsrequest
     Response:
-    		{"domain" : "pepe.com"}
+    		{"domain" : "meneame.net"}
     
     POST domain.com/api/analiticsupdate
     Request:
-    {"domain": "pepe.com",
-    	"adsense_code" : "pub-1212892387/12345"}
+    {"domain": "meneame.net",
+    	"adsense_code" : "UA-229718-1"}
     ```
     
 - 2 endpoints per guardar el raw del whois (Camilo)
