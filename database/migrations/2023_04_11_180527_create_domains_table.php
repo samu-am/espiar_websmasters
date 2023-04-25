@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('domain');
             $table->text('whois_raw')->nullable()->default(null);
             $table->date('expired_date')->nullable()->default(null);
-            $table->date('ip')->nullable()->default(null);
+            $table->string('ip',20)->nullable()->default(null);
             $table->string('dns')->nullable()->default(null);
             $table->string('domain_ip')->nullable()->default(null);
             $table->date('discovered')->nullable()->default(null);
