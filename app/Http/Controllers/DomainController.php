@@ -11,9 +11,20 @@ class DomainController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $domains = Domain::paginate(10);
+        //dd($request->page);
+
+        $request->validate([
+            "filter_domain" => "nullable|string"
+        ]);
+
+        if ($request->has("filter_domain")) {
+            $domains = Domain::where("domain", "LIKE", "%" . $request->filter_domain . "%")
+                ->with(["adsense", "analytic"])->paginate(10);
+        } else {
+            $domains = Domain::with(["adsense", "analytic"])->paginate(10);
+        }
 
         return view('welcome', compact('domains'));
     }

@@ -13,6 +13,20 @@
 
 <body>
     <div class="container m-5">
+
+        <div class="mb-3">
+            <form method="get" action="{{ route('index') }}" class="d-flex gap-3">
+                <div>
+                    <div class="form-group col">
+                        <input type="text" class="form-control" id="filter_domain" name="filter_domain"
+                            placeholder="Domini" value={{ $_GET['filter_domain'] ?? '' }}>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
         <div class="row">
             <table class="table table-striped table-hover">
                 <thead>
@@ -22,7 +36,7 @@
                     <th>Whois</th>
                     <th>Data de expiració</th>
                     <th>DNS</th>
-                    <th class="d-none">IP</th>
+                    <th>IP</th>
                     <th>Discovered</th>
                     <th>CMS principal</th>
                 </thead>
@@ -31,10 +45,10 @@
                         <tr>
                             <td>{{ $domain->domain }}</td>
                             <td class="text-center">
-                                {{ $domain->adense->code ?? '-' }}
+                                {{ $domain->adsense->code ?? '-' }}
                             </td>
                             <td class="text-center">
-                                {{ $domain->analytics->code ?? '-' }}
+                                {{ $domain->analytic->code ?? '-' }}
                             </td>
                             <td class="text-center">
                                 {{ $domain->whois_raw ?? '-' }}
@@ -45,9 +59,8 @@
                             <td class="text-center">
                                 {{ $domain->dns ?? '-' }}
                             </td>
-                            <td class="text-center d-none">
-                                -
-                                <!-- IP -->
+                            <td class="text-center">
+                                {{ $domain->ip ?? '-' }}
                             </td>
                             <td class="text-center">
                                 {{ $domain->discovered ?? '-' }}
@@ -60,7 +73,7 @@
                 </tbody>
             </table>
             <div>
-                {{ $domains->links() }}
+                {{ $domains->appends($_GET)->links() }}
             </div>
         </div>
     </div>

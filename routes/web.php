@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DomainController::class, "index"]);
+Route::get('/', [DomainController::class, "index"])->name("index");
+Route::post('/', [DomainController::class, "index"])->name("index.filter");

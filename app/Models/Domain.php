@@ -15,18 +15,23 @@ class Domain extends Model
         'expired_date',
         'dns',
         'domain_ip',
+        'ip',
         'discovered',
         'cms_principal',
         'analytics_id',
         'adsenses_id',
     ];
 
+    public function filter($q, $data)
+    {
+    }
+
     public function analytic()
     {
         return $this->belongsTo(Analytic::class);
     }
 
-    public function adense()
+    public function adsense()
     {
         return $this->belongsTo(Adsense::class);
     }
