@@ -37,3 +37,7 @@ Route::post('/adsenserequest', [AdsenseController::class, 'getAdsense']);
 
 Route::post('/iprequest', [IpController::class,'ipRequest']);
 Route::post('/ipupdate', [IpController::class,'ipUpdate']);
+
+Route::post('/wppluginrequest', [WPpluginController::class, 'getPlugin']);
+
+Route::post('/wppluginupdate', [WPpluginController::class, 'setPlugin']);
