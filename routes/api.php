@@ -6,6 +6,7 @@ use App\Http\Controllers\WhoisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IpController;
+use App\Http\Controllers\analyticsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,3 +42,5 @@ Route::post('/ipupdate', [IpController::class,'ipUpdate']);
 Route::post('/wppluginrequest', [WPpluginController::class, 'getPlugin']);
 
 Route::post('/wppluginupdate', [WPpluginController::class, 'setPlugin']);
+Route::post('/analyticsrequest', [analyticsController::class,'analyticsRequest']);
+Route::post('/analyticupdate', [analyticsController::class,'analyticsUpdate']);
