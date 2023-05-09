@@ -24,6 +24,7 @@ class WhoisController extends Controller
         }
 
         Domain::where('domain', $domain)->update(['whois_raw' => $whois]);
+        ExpireDateController::updateExpireDate($domain); // Llama a la función updateExpireDate
         return new Response(json_encode(['status' => 'Datos añadidos correctamente']), 200, ['content-type' => 'application/json']);
     }
 }
