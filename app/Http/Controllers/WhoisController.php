@@ -22,7 +22,7 @@ class  WhoisController extends Controller
         if ($domain === null || $whois === null) {
             return new Response(json_encode(['status' => "Algún dato no es correcto"]), 400, ['content-type' => 'application/json']);
         }
-
+        ExpireDateController::updateExpireDate($domain); // Llama a la función updateExpireDate
         Domain::where('domain', $domain)->update(['whois_raw' => $whois]);
         DNSCONTROLLER::updateDns($domain);
         return new Response(json_encode(['status' => 'Datos añadidos correctamente']), 200, ['content-type' => 'application/json']);
