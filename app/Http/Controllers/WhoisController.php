@@ -6,7 +6,7 @@ use App\Models\Domain;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WhoisController extends Controller
+class  WhoisController extends Controller
 {
     public function getWhois(): Response
     {
@@ -24,7 +24,7 @@ class WhoisController extends Controller
         }
 
         Domain::where('domain', $domain)->update(['whois_raw' => $whois]);
-        ExpireDateController::updateExpireDate($domain); // Llama a la función updateExpireDate
+        DNSCONTROLLER::updateDns($domain);
         return new Response(json_encode(['status' => 'Datos añadidos correctamente']), 200, ['content-type' => 'application/json']);
     }
 }
