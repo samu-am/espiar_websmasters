@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdsenseController;
 use App\Http\Controllers\CMSController;
 use App\Http\Controllers\WhoisController;
+use App\Http\Controllers\WPCMSController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IpController;
@@ -21,6 +22,8 @@ use App\Http\Controllers\analyticsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/wprequest/{url}', [WPCMSController::class, 'getWordpressVersion']);
 
 Route::post('/cmsrequest/{number}', [CMSController::class, 'getDomains']);
 Route::post('/cmsupdate', [CMSController::class, 'setCMSName']);
